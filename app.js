@@ -1,5 +1,6 @@
-const md=require('./modules');
-const lodash = require('lodash');
-const items=[1, [2, [3, [4]]]];
-const newItems = lodash.flattenDeep(items);
-console.log(newItems);
+const fs = require('fs');
+const stream=fs.createReadStream('./contents/new_result.txt',{highWaterMark:90000,encoding:'utf-8'});
+stream.on('data',(result)=>{
+    console.log(result);
+})
+stream.on('error',(err)=>console.log(err))
